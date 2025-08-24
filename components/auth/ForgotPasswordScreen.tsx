@@ -159,7 +159,7 @@ export function ForgotPasswordScreen({ onNavigate }: ForgotPasswordScreenProps) 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#0F0F0F',
   },
   scrollContainer: {
     flexGrow: 1,
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: '#1F2937',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -185,13 +185,13 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginTop: 20,
     marginBottom: 8,
   },
   subtitleText: {
     fontSize: 16,
-    color: '#6B7280',
+    color: '#9CA3AF',
     textAlign: 'center',
     lineHeight: 22,
     paddingHorizontal: 16,
@@ -205,18 +205,18 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#374151',
+    color: '#E5E7EB',
     marginBottom: 8,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#D1D5DB',
+    borderColor: '#374151',
     borderRadius: 12,
     paddingHorizontal: 16,
     paddingVertical: 16,
     fontSize: 16,
-    backgroundColor: '#FFFFFF',
-    color: '#1F2937',
+    backgroundColor: '#1F2937',
+    color: '#FFFFFF',
   },
   inputFocused: {
     borderColor: '#2563EB',
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#9CA3AF',
   },
   loginLink: {
     color: '#2563EB',
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: '#EBF4FF',
+    backgroundColor: '#1E3A8A',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 32,
@@ -266,12 +266,12 @@ const styles = StyleSheet.create({
   successTitle: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginBottom: 16,
   },
   successText: {
     fontSize: 16,
-    color: '#6B7280',
+    color: '#9CA3AF',
     textAlign: 'center',
     lineHeight: 22,
     marginBottom: 40,
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   resendText: {
-    color: '#6B7280',
+    color: '#9CA3AF',
     fontSize: 14,
     textAlign: 'center',
   },
