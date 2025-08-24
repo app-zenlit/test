@@ -7,12 +7,12 @@ interface ZenlitLogoProps {
   size?: number;
 }
 
-export function ZenlitLogo({ size = 48 }: ZenlitLogoProps) {
+export function ZenlitLogo({ size = 32 }: ZenlitLogoProps) {
   const fontSize = size;
 
   return (
     <MaskedView
-      style={[styles.container, { height: fontSize * 1.2, width: fontSize * 3.5 }]}
+      style={[styles.container, { height: fontSize * 1.2, width: fontSize * 3.2 }]}
       maskElement={
         <View style={styles.maskContainer}>
           <Text
@@ -20,6 +20,7 @@ export function ZenlitLogo({ size = 48 }: ZenlitLogoProps) {
               styles.logoText,
               {
                 fontSize,
+                lineHeight: fontSize * 1.2,
               }
             ]}
           >
@@ -51,7 +52,6 @@ const styles = StyleSheet.create({
   },
   logoText: {
     fontWeight: '500',
-    fontFamily: 'System', // Will use Inter when loaded
     color: 'black',
     textAlign: 'center',
   },

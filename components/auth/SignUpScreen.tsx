@@ -7,7 +7,6 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
-  ScrollView,
   Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -44,47 +43,46 @@ export function SignUpScreen({ onNavigate }: SignUpScreenProps) {
   const handleGoogleSignUp = () => {
     Alert.alert('Google Sign Up', 'Google authentication will be connected to backend');
   };
+
   return (
     <KeyboardAvoidingView 
       style={styles.container} 
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <ScrollView 
-        contentContainerStyle={styles.scrollContainer}
-        showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled"
-      >
+      <View style={styles.content}>
         <View style={styles.backButton}>
           <TouchableOpacity 
             style={styles.backButtonTouchable}
             onPress={() => onNavigate('login')}
           >
-            <ArrowLeft size={24} color="#1F2937" />
+            <ArrowLeft size={20} color="#E5E7EB" />
           </TouchableOpacity>
         </View>
 
         <View style={styles.header}>
-          <ZenlitLogo size={40} />
+          <ZenlitLogo size={32} />
           <Text style={styles.welcomeText}>Create Account</Text>
-          <Text style={styles.subtitleText}>Join Zenlit and start connecting</Text>
+          <Text style={styles.subtitleText}>Join Zenlit today</Text>
         </View>
 
         <View style={styles.form}>
-          <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>Full Name</Text>
-            <TextInput
-              style={[
-                styles.input,
-                focusedField === 'fullName' && styles.inputFocused,
-              ]}
-              value={fullName}
-              onChangeText={setFullName}
-              placeholder="Enter your full name"
-              placeholderTextColor="#9CA3AF"
-              autoCapitalize="words"
-              onFocus={() => setFocusedField('fullName')}
-              onBlur={() => setFocusedField(null)}
-            />
+          <View style={styles.inputRow}>
+            <View style={styles.inputContainer}>
+              <Text style={styles.inputLabel}>Full Name</Text>
+              <TextInput
+                style={[
+                  styles.input,
+                  focusedField === 'fullName' && styles.inputFocused,
+                ]}
+                value={fullName}
+                onChangeText={setFullName}
+                placeholder="Your name"
+                placeholderTextColor="#6B7280"
+                autoCapitalize="words"
+                onFocus={() => setFocusedField('fullName')}
+                onBlur={() => setFocusedField(null)}
+              />
+            </View>
           </View>
 
           <View style={styles.inputContainer}>
@@ -96,8 +94,8 @@ export function SignUpScreen({ onNavigate }: SignUpScreenProps) {
               ]}
               value={email}
               onChangeText={setEmail}
-              placeholder="Enter your email address"
-              placeholderTextColor="#9CA3AF"
+              placeholder="Enter your email"
+              placeholderTextColor="#6B7280"
               keyboardType="email-address"
               autoCapitalize="none"
               autoCorrect={false}
@@ -106,61 +104,63 @@ export function SignUpScreen({ onNavigate }: SignUpScreenProps) {
             />
           </View>
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>Password</Text>
-            <View style={[
-              styles.passwordContainer,
-              focusedField === 'password' && styles.inputFocused,
-            ]}>
-              <TextInput
-                style={styles.passwordInput}
-                value={password}
-                onChangeText={setPassword}
-                placeholder="Create a password"
-                placeholderTextColor="#9CA3AF"
-                secureTextEntry={!showPassword}
-                onFocus={() => setFocusedField('password')}
-                onBlur={() => setFocusedField(null)}
-              />
-              <TouchableOpacity
-                style={styles.eyeButton}
-                onPress={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? (
-                  <EyeOff size={20} color="#6B7280" />
-                ) : (
-                  <Eye size={20} color="#6B7280" />
-                )}
-              </TouchableOpacity>
+          <View style={styles.inputRow}>
+            <View style={[styles.inputContainer, styles.halfWidth]}>
+              <Text style={styles.inputLabel}>Password</Text>
+              <View style={[
+                styles.passwordContainer,
+                focusedField === 'password' && styles.inputFocused,
+              ]}>
+                <TextInput
+                  style={styles.passwordInput}
+                  value={password}
+                  onChangeText={setPassword}
+                  placeholder="Password"
+                  placeholderTextColor="#6B7280"
+                  secureTextEntry={!showPassword}
+                  onFocus={() => setFocusedField('password')}
+                  onBlur={() => setFocusedField(null)}
+                />
+                <TouchableOpacity
+                  style={styles.eyeButton}
+                  onPress={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <EyeOff size={16} color="#6B7280" />
+                  ) : (
+                    <Eye size={16} color="#6B7280" />
+                  )}
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>Confirm Password</Text>
-            <View style={[
-              styles.passwordContainer,
-              focusedField === 'confirmPassword' && styles.inputFocused,
-            ]}>
-              <TextInput
-                style={styles.passwordInput}
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
-                placeholder="Confirm your password"
-                placeholderTextColor="#9CA3AF"
-                secureTextEntry={!showConfirmPassword}
-                onFocus={() => setFocusedField('confirmPassword')}
-                onBlur={() => setFocusedField(null)}
-              />
-              <TouchableOpacity
-                style={styles.eyeButton}
-                onPress={() => setShowConfirmPassword(!showConfirmPassword)}
-              >
-                {showConfirmPassword ? (
-                  <EyeOff size={20} color="#6B7280" />
-                ) : (
-                  <Eye size={20} color="#6B7280" />
-                )}
-              </TouchableOpacity>
+            <View style={[styles.inputContainer, styles.halfWidth]}>
+              <Text style={styles.inputLabel}>Confirm</Text>
+              <View style={[
+                styles.passwordContainer,
+                focusedField === 'confirmPassword' && styles.inputFocused,
+              ]}>
+                <TextInput
+                  style={styles.passwordInput}
+                  value={confirmPassword}
+                  onChangeText={setConfirmPassword}
+                  placeholder="Confirm"
+                  placeholderTextColor="#6B7280"
+                  secureTextEntry={!showConfirmPassword}
+                  onFocus={() => setFocusedField('confirmPassword')}
+                  onBlur={() => setFocusedField(null)}
+                />
+                <TouchableOpacity
+                  style={styles.eyeButton}
+                  onPress={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? (
+                    <EyeOff size={16} color="#6B7280" />
+                  ) : (
+                    <Eye size={16} color="#6B7280" />
+                  )}
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
 
@@ -182,7 +182,7 @@ export function SignUpScreen({ onNavigate }: SignUpScreenProps) {
           </View>
 
           <TouchableOpacity style={styles.googleButton} onPress={handleGoogleSignUp}>
-            <GoogleIcon size={20} />
+            <GoogleIcon size={18} />
             <Text style={styles.googleButtonText}>Continue with Google</Text>
           </TouchableOpacity>
         </View>
@@ -198,7 +198,7 @@ export function SignUpScreen({ onNavigate }: SignUpScreenProps) {
             </Text>
           </Text>
         </View>
-      </ScrollView>
+      </View>
     </KeyboardAvoidingView>
   );
 }
@@ -206,60 +206,69 @@ export function SignUpScreen({ onNavigate }: SignUpScreenProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F0F0F',
+    backgroundColor: '#000000',
   },
-  scrollContainer: {
-    flexGrow: 1,
+  content: {
+    flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 60,
-    paddingBottom: 40,
+    paddingTop: 20,
+    paddingBottom: 20,
+    justifyContent: 'space-between',
   },
   backButton: {
-    marginBottom: 24,
+    alignSelf: 'flex-start',
   },
   backButtonTouchable: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     backgroundColor: '#1F2937',
     alignItems: 'center',
     justifyContent: 'center',
   },
   header: {
     alignItems: 'center',
-    marginBottom: 40,
   },
   welcomeText: {
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: '700',
     color: '#FFFFFF',
-    marginTop: 20,
-    marginBottom: 8,
+    marginTop: 12,
+    marginBottom: 4,
   },
   subtitleText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#9CA3AF',
     textAlign: 'center',
   },
   form: {
     flex: 1,
+    justifyContent: 'center',
+    paddingVertical: 16,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    gap: 12,
   },
   inputContainer: {
-    marginBottom: 20,
+    marginBottom: 14,
+  },
+  halfWidth: {
+    flex: 1,
   },
   inputLabel: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '600',
     color: '#E5E7EB',
-    marginBottom: 8,
+    marginBottom: 6,
   },
   input: {
     borderWidth: 1,
     borderColor: '#374151',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    fontSize: 16,
+    borderRadius: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    fontSize: 14,
     backgroundColor: '#1F2937',
     color: '#FFFFFF',
   },
@@ -272,39 +281,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: '#374151',
-    borderRadius: 12,
+    borderRadius: 10,
     backgroundColor: '#1F2937',
   },
   passwordInput: {
     flex: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    fontSize: 16,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    fontSize: 14,
     color: '#FFFFFF',
   },
   eyeButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 12,
   },
   signupButton: {
-    borderRadius: 12,
+    borderRadius: 10,
     overflow: 'hidden',
-    marginTop: 24,
-    marginBottom: 32,
+    marginTop: 16,
+    marginBottom: 16,
   },
   signupButtonGradient: {
-    paddingVertical: 18,
+    paddingVertical: 14,
     alignItems: 'center',
   },
   signupButtonText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '600',
   },
   dividerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 24,
+    marginVertical: 16,
   },
   dividerLine: {
     flex: 1,
@@ -312,8 +321,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#374151',
   },
   dividerText: {
-    marginHorizontal: 16,
-    fontSize: 14,
+    marginHorizontal: 12,
+    fontSize: 13,
     color: '#6B7280',
     fontWeight: '500',
   },
@@ -323,23 +332,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: '#374151',
-    borderRadius: 12,
-    paddingVertical: 16,
+    borderRadius: 10,
+    paddingVertical: 14,
     backgroundColor: '#1F2937',
-    marginBottom: 24,
   },
   googleButtonText: {
-    marginLeft: 12,
-    fontSize: 16,
+    marginLeft: 10,
+    fontSize: 15,
     fontWeight: '600',
     color: '#E5E7EB',
   },
   footer: {
     alignItems: 'center',
-    marginTop: 'auto',
   },
   footerText: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#9CA3AF',
   },
   loginLink: {

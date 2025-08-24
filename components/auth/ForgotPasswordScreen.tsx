@@ -7,7 +7,6 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
-  ScrollView,
   Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -39,22 +38,19 @@ export function ForgotPasswordScreen({ onNavigate }: ForgotPasswordScreenProps) 
         style={styles.container} 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <ScrollView 
-          contentContainerStyle={styles.scrollContainer}
-          showsVerticalScrollIndicator={false}
-        >
+        <View style={styles.content}>
           <View style={styles.backButton}>
             <TouchableOpacity 
               style={styles.backButtonTouchable}
               onPress={() => onNavigate('login')}
             >
-              <ArrowLeft size={24} color="#1F2937" />
+              <ArrowLeft size={20} color="#E5E7EB" />
             </TouchableOpacity>
           </View>
 
           <View style={styles.successContainer}>
             <View style={styles.iconContainer}>
-              <Mail size={48} color="#2563EB" />
+              <Mail size={40} color="#2563EB" />
             </View>
             <Text style={styles.successTitle}>Check your email</Text>
             <Text style={styles.successText}>
@@ -66,7 +62,14 @@ export function ForgotPasswordScreen({ onNavigate }: ForgotPasswordScreenProps) 
               style={styles.backToLoginButton}
               onPress={() => onNavigate('login')}
             >
-              <Text style={styles.backToLoginText}>Back to Sign In</Text>
+              <LinearGradient
+                colors={['#2563EB', '#7E22CE']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.buttonGradient}
+              >
+                <Text style={styles.backToLoginText}>Back to Sign In</Text>
+              </LinearGradient>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -76,7 +79,7 @@ export function ForgotPasswordScreen({ onNavigate }: ForgotPasswordScreenProps) 
               <Text style={styles.resendText}>Didn't receive the email? Try again</Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
+        </View>
       </KeyboardAvoidingView>
     );
   }
@@ -86,25 +89,21 @@ export function ForgotPasswordScreen({ onNavigate }: ForgotPasswordScreenProps) 
       style={styles.container} 
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <ScrollView 
-        contentContainerStyle={styles.scrollContainer}
-        showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled"
-      >
+      <View style={styles.content}>
         <View style={styles.backButton}>
           <TouchableOpacity 
             style={styles.backButtonTouchable}
             onPress={() => onNavigate('login')}
           >
-            <ArrowLeft size={24} color="#1F2937" />
+            <ArrowLeft size={20} color="#E5E7EB" />
           </TouchableOpacity>
         </View>
 
         <View style={styles.header}>
-          <ZenlitLogo size={40} />
+          <ZenlitLogo size={32} />
           <Text style={styles.welcomeText}>Reset Password</Text>
           <Text style={styles.subtitleText}>
-            Enter your email address and we'll send you instructions to reset your password
+            Enter your email to receive reset instructions
           </Text>
         </View>
 
@@ -119,7 +118,7 @@ export function ForgotPasswordScreen({ onNavigate }: ForgotPasswordScreenProps) 
               value={email}
               onChangeText={setEmail}
               placeholder="Enter your email address"
-              placeholderTextColor="#9CA3AF"
+              placeholderTextColor="#6B7280"
               keyboardType="email-address"
               autoCapitalize="none"
               autoCorrect={false}
@@ -151,7 +150,7 @@ export function ForgotPasswordScreen({ onNavigate }: ForgotPasswordScreenProps) 
             </Text>
           </Text>
         </View>
-      </ScrollView>
+      </View>
     </KeyboardAvoidingView>
   );
 }
@@ -159,62 +158,64 @@ export function ForgotPasswordScreen({ onNavigate }: ForgotPasswordScreenProps) 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F0F0F',
+    backgroundColor: '#000000',
   },
-  scrollContainer: {
-    flexGrow: 1,
+  content: {
+    flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 60,
-    paddingBottom: 40,
+    paddingTop: 20,
+    paddingBottom: 20,
+    justifyContent: 'space-between',
   },
   backButton: {
-    marginBottom: 24,
+    alignSelf: 'flex-start',
   },
   backButtonTouchable: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     backgroundColor: '#1F2937',
     alignItems: 'center',
     justifyContent: 'center',
   },
   header: {
     alignItems: 'center',
-    marginBottom: 48,
+    paddingTop: 20,
   },
   welcomeText: {
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: '700',
     color: '#FFFFFF',
-    marginTop: 20,
-    marginBottom: 8,
+    marginTop: 12,
+    marginBottom: 4,
   },
   subtitleText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#9CA3AF',
     textAlign: 'center',
-    lineHeight: 22,
-    paddingHorizontal: 16,
+    lineHeight: 20,
   },
   form: {
     flex: 1,
+    justifyContent: 'center',
+    paddingVertical: 20,
   },
   inputContainer: {
-    marginBottom: 32,
+    marginBottom: 20,
   },
   inputLabel: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '600',
     color: '#E5E7EB',
-    marginBottom: 8,
+    marginBottom: 6,
   },
   input: {
     borderWidth: 1,
     borderColor: '#374151',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    fontSize: 16,
+    borderRadius: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    fontSize: 15,
     backgroundColor: '#1F2937',
     color: '#FFFFFF',
   },
@@ -223,25 +224,24 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   resetButton: {
-    borderRadius: 12,
+    borderRadius: 10,
     overflow: 'hidden',
-    marginBottom: 32,
+    marginTop: 16,
   },
   resetButtonGradient: {
-    paddingVertical: 18,
+    paddingVertical: 14,
     alignItems: 'center',
   },
   resetButtonText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '600',
   },
   footer: {
     alignItems: 'center',
-    marginTop: 'auto',
   },
   footerText: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#9CA3AF',
   },
   loginLink: {
@@ -252,52 +252,112 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 32,
+    paddingHorizontal: 20,
   },
   iconContainer: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 72,
+    height: 72,
+    borderRadius: 36,
     backgroundColor: '#1E3A8A',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 32,
+    marginBottom: 24,
   },
   successTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: '700',
     color: '#FFFFFF',
-    marginBottom: 16,
+    marginBottom: 12,
   },
   successText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#9CA3AF',
     textAlign: 'center',
-    lineHeight: 22,
-    marginBottom: 40,
+    lineHeight: 20,
+    marginBottom: 32,
   },
   emailText: {
     fontWeight: '600',
     color: '#2563EB',
   },
   backToLoginButton: {
-    backgroundColor: '#2563EB',
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    borderRadius: 12,
-    marginBottom: 16,
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginBottom: 12,
+  },
+  buttonGradient: {
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    alignItems: 'center',
   },
   backToLoginText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '600',
   },
   resendButton: {
-    paddingVertical: 12,
+    paddingVertical: 8,
   },
   resendText: {
     color: '#9CA3AF',
-    fontSize: 14,
+    fontSize: 13,
     textAlign: 'center',
+  },
+  inputRow: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  halfWidth: {
+    flex: 1,
+  },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#374151',
+    borderRadius: 10,
+    backgroundColor: '#1F2937',
+  },
+  passwordInput: {
+    flex: 1,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    fontSize: 14,
+    color: '#FFFFFF',
+  },
+  eyeButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+  },
+  signupButton: {
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginTop: 16,
+    marginBottom: 16,
+  },
+  signupButtonGradient: {
+    paddingVertical: 14,
+    alignItems: 'center',
+  },
+  signupButtonText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  googleButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#374151',
+    borderRadius: 10,
+    paddingVertical: 14,
+    backgroundColor: '#1F2937',
+  },
+  googleButtonText: {
+    marginLeft: 10,
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#E5E7EB',
   },
 });
