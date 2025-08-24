@@ -52,10 +52,13 @@ const styles = StyleSheet.create({
   },
   logoText: {
     fontWeight: '500',
-    color: 'black',
+    color: '#000000',
     textAlign: 'center',
+    fontFamily: Platform.OS === 'ios' ? 'System' : 'sans-serif',
   },
   gradient: {
     flex: 1,
+    width: '100%',
+    height: '100%',
   },
 });
