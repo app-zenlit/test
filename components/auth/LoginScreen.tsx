@@ -152,7 +152,7 @@ export function LoginScreen({ onNavigate }: LoginScreenProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#0F0F0F',
   },
   scrollContainer: {
     flexGrow: 1,
@@ -167,13 +167,13 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#1F2937',
+    color: '#FFFFFF',
     marginTop: 24,
     marginBottom: 8,
   },
   subtitleText: {
     fontSize: 16,
-    color: '#6B7280',
+    color: '#9CA3AF',
     textAlign: 'center',
   },
   form: {
@@ -185,18 +185,18 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#374151',
+    color: '#E5E7EB',
     marginBottom: 8,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#D1D5DB',
+    borderColor: '#374151',
     borderRadius: 12,
     paddingHorizontal: 16,
     paddingVertical: 16,
     fontSize: 16,
-    backgroundColor: '#FFFFFF',
-    color: '#1F2937',
+    backgroundColor: '#1F2937',
+    color: '#FFFFFF',
   },
   inputFocused: {
     borderColor: '#2563EB',
@@ -206,16 +206,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#D1D5DB',
+    borderColor: '#374151',
     borderRadius: 12,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1F2937',
   },
   passwordInput: {
     flex: 1,
     paddingHorizontal: 16,
     paddingVertical: 16,
     fontSize: 16,
-    color: '#1F2937',
+    color: '#FFFFFF',
   },
   eyeButton: {
     paddingHorizontal: 16,
@@ -252,12 +252,12 @@ const styles = StyleSheet.create({
   dividerLine: {
     flex: 1,
     height: 1,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: '#374151',
   },
   dividerText: {
     marginHorizontal: 16,
     fontSize: 14,
-    color: '#9CA3AF',
+    color: '#6B7280',
     fontWeight: '500',
   },
   googleButton: {
@@ -265,17 +265,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: '#D1D5DB',
+    borderColor: '#374151',
     borderRadius: 12,
     paddingVertical: 16,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1F2937',
     marginBottom: 24,
   },
   googleButtonText: {
     marginLeft: 12,
     fontSize: 16,
     fontWeight: '600',
-    color: '#374151',
+    color: '#E5E7EB',
   },
   footer: {
     alignItems: 'center',
@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#9CA3AF',
   },
   signupLink: {
     color: '#2563EB',
