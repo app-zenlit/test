@@ -13,7 +13,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { ZenlitLogo } from '../ZenlitLogo';
 import { Eye, EyeOff } from 'lucide-react-native';
-import { GoogleIcon } from '../GoogleIcon';
+import { GoogleIcon } from '@/components/GoogleIcon';
 import type { AuthScreen } from '../AuthNavigator';
 
 interface LoginScreenProps {
