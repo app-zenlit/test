@@ -13,6 +13,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { ZenlitLogo } from '../ZenlitLogo';
 import { Eye, EyeOff, ArrowLeft } from 'lucide-react-native';
+import { GoogleIcon } from '../GoogleIcon';
 import type { AuthScreen } from '../AuthNavigator';
 
 interface SignUpScreenProps {
@@ -40,6 +41,9 @@ export function SignUpScreen({ onNavigate }: SignUpScreenProps) {
     Alert.alert('Success', 'Account creation will be connected to backend');
   };
 
+  const handleGoogleSignUp = () => {
+    Alert.alert('Google Sign Up', 'Google authentication will be connected to backend');
+  };
   return (
     <KeyboardAvoidingView 
       style={styles.container} 
@@ -170,6 +174,17 @@ export function SignUpScreen({ onNavigate }: SignUpScreenProps) {
               <Text style={styles.signupButtonText}>Create Account</Text>
             </LinearGradient>
           </TouchableOpacity>
+
+          <View style={styles.dividerContainer}>
+            <View style={styles.dividerLine} />
+            <Text style={styles.dividerText}>or</Text>
+            <View style={styles.dividerLine} />
+          </View>
+
+          <TouchableOpacity style={styles.googleButton} onPress={handleGoogleSignUp}>
+            <GoogleIcon size={20} />
+            <Text style={styles.googleButtonText}>Continue with Google</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.footer}>
@@ -285,6 +300,39 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
+  },
+  dividerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 24,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#E5E7EB',
+  },
+  dividerText: {
+    marginHorizontal: 16,
+    fontSize: 14,
+    color: '#9CA3AF',
+    fontWeight: '500',
+  },
+  googleButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#D1D5DB',
+    borderRadius: 12,
+    paddingVertical: 16,
+    backgroundColor: '#FFFFFF',
+    marginBottom: 24,
+  },
+  googleButtonText: {
+    marginLeft: 12,
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#374151',
   },
   footer: {
     alignItems: 'center',
