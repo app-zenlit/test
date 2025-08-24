@@ -7,12 +7,12 @@ interface ZenlitLogoProps {
   size?: number;
 }
 
-export function ZenlitLogo({ size = 32 }: ZenlitLogoProps) {
+export function ZenlitLogo({ size = 48 }: ZenlitLogoProps) {
   const fontSize = size;
 
   return (
     <MaskedView
-      style={[styles.container, { height: fontSize * 1.2, width: fontSize * 3.2 }]}
+      style={[styles.container, { height: fontSize * 1.3, width: fontSize * 4 }]}
       maskElement={
         <View style={styles.maskContainer}>
           <Text
@@ -21,7 +21,7 @@ export function ZenlitLogo({ size = 32 }: ZenlitLogoProps) {
               {
                 fontSize,
                 lineHeight: fontSize * 1.2,
-              }
+              },
             ]}
           >
             Zenlit
@@ -30,10 +30,10 @@ export function ZenlitLogo({ size = 32 }: ZenlitLogoProps) {
       }
     >
       <LinearGradient
-        colors={['#2563EB', '#7E22CE']}
+        colors={['#2563EB', '#7E22CE']} // Blue → Purple gradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        style={styles.gradient}
+        style={StyleSheet.absoluteFill}
       />
     </MaskedView>
   );
@@ -41,8 +41,8 @@ export function ZenlitLogo({ size = 32 }: ZenlitLogoProps) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   maskContainer: {
     backgroundColor: 'transparent',
@@ -51,14 +51,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logoText: {
-    fontWeight: '500',
-    color: '#000000',
+    fontWeight: '700',
+    color: '#000', // This will be masked
     textAlign: 'center',
     fontFamily: Platform.OS === 'ios' ? 'System' : 'sans-serif',
-  },
-  gradient: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
   },
 });
